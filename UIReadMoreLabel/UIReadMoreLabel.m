@@ -20,6 +20,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         _truncationString = @" ...More";
+        _truncationFont = self.font;
+        _truncationColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
     }
     return self;
 }
@@ -29,6 +31,8 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         _truncationString = @" ...More";
+        _truncationFont = self.font;
+        _truncationColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
         [self setText:self.text];
     }
     return self;
@@ -49,8 +53,8 @@
             NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:self.text];
             [attributedString setAttributes:@{NSFontAttributeName:self.font}
                                       range:NSMakeRange(0, self.attributedText.length-_truncationString.length)];
-            [attributedString setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:self.font.pointSize],
-                                              NSForegroundColorAttributeName:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]}
+            [attributedString setAttributes:@{NSFontAttributeName:_truncationFont,
+                                              NSForegroundColorAttributeName:_truncationColor}
                                       range:NSMakeRange(self.attributedText.length-_truncationString.length, _truncationString.length)];
             [self setAttributedText:attributedString];
         }

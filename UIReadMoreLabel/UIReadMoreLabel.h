@@ -14,6 +14,8 @@
 @interface UIReadMoreLabel : UILabel
 
 @property (strong, nonatomic) NSString* truncationString;
+@property (strong, nonatomic) UIFont* truncationFont;
+@property (strong, nonatomic) UIColor* truncationColor;
 @property (readonly,assign, nonatomic) BOOL isTruncated;
 
 @end
